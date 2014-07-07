@@ -67,7 +67,7 @@ endfunction
 function! airline#extensions#tabline#load_theme(palette)
   let colors    = get(a:palette, 'tabline', {})
   let l:tab     = get(colors, 'airline_tab', a:palette.normal.airline_b)
-  let l:tabsel  = get(colors, 'airline_tabsel', a:palette.normal.airline_a)
+  let l:tabsel  = get(colors, 'airline_tabsel', a:palette.insert.airline_a)
   let l:tabtype = get(colors, 'airline_tabtype', a:palette.visual.airline_a)
   let l:tabfill = get(colors, 'airline_tabfill', a:palette.normal.airline_c)
   let l:tabmod  = get(colors, 'airline_tabmod', a:palette.insert.airline_a)
@@ -219,7 +219,7 @@ function! s:get_buffers()
     call b.add_section(group, s:spc.'%(%{airline#extensions#tabline#get_buffer_name('.nr.')}%)'.s:spc)
   endfor
 
-  call b.add_section('airline_tabfill', '')
+  "call b.add_section('airline_tabfill', '')
   call b.split()
   call b.add_section('airline_tabtype', ' buffers ')
 
@@ -264,12 +264,12 @@ function! s:get_tabs()
   endfor
 
   call b.add_raw('%T')
-  call b.add_section('airline_tabfill', '')
+  "call b.add_section('airline_tabfill', '')
   call b.split()
-  call b.add_section('airline_tab', ' %999X'.s:close_symbol.' ')
-  if s:show_tab_type
-    call b.add_section('airline_tabtype', ' tabs ')
-  endif
+  "call b.add_section('airline_tab', ' %999X'.s:close_symbol.' ')
+  "if s:show_tab_type
+  "  call b.add_section('airline_tabtype', ' tabs ')
+  "endif
 
   let s:current_bufnr = curbuf
   let s:current_tabnr = curtab
